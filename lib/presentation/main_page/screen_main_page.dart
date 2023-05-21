@@ -1,35 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:netflix/presentation/fast_laugh/fast_laugh_page.dart';
+import 'package:netflix/core/colors/color.dart';
+
 import 'package:netflix/presentation/home/screen_home.dart';
-import 'package:netflix/presentation/main_page/widgets/bottom_Nav.dart';
-import 'package:netflix/presentation/new_and_hot/screen_new_and_hot.dart';
-import 'package:netflix/presentation/search/search_page.dart';
+import 'package:netflix/presentation/main_page/widgets/bottom_nav.dart';
 
-import '../../core/colors/color.dart';
+
 import '../download/screen_download.dart';
+import '../fast_laugh/fast_laugh_page.dart';
+import '../new_and_hot/screen_new_and_hot.dart';
+import '../search/search_page.dart';
 
-class ScreenMainPage extends StatelessWidget {
-   ScreenMainPage({super.key});
-  final pages=[
-  ScreenHomePage(),
-  NewAndHot(),
-  FastLaughPage(),
-  SearchPage(),
-  ScreenDownload(),
- ];
+
+class ScreenMain extends StatelessWidget {
+   ScreenMain({super.key});
+
+  final _pages = [
+    const ScreenHome(),
+    const ScreenNewAndHot(),
+    const ScreenFastLaugh(),
+    const ScreenSearch(),
+     ScreenDownload()
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      backgroundColor: kblackColor,
       body: SafeArea(
-        child: ValueListenableBuilder(valueListenable: indexNotifier, builder: (context,int index, _) {
-          return pages[index];
-        },),
+        child: ValueListenableBuilder(
+          valueListenable: indexNotifier,
+          builder: (BuildContext context, dynamic index, Widget? _) {
+            return _pages[index];
+          },
+        ),
       ),
-      bottomNavigationBar: BottomNavigatioWidgets(),
-
+      bottomNavigationBar: const BottomNavigatioWidgets(),
     );
   }
 }

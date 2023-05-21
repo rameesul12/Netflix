@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix/presentation/main_page/screen_main_page.dart';
-
 import 'core/colors/color.dart';
-
-
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +27,7 @@ class MyApp extends StatelessWidget {
        
       )     
       ),
-      home:  ScreenMainPage(),
+      home:  ScreenMain(),
     );
   }
 }
